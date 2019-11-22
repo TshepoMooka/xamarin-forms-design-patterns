@@ -7,7 +7,14 @@ using GreatQuotes.Data;
 using GreatQuotes.ViewModels;
 
 namespace GreatQuotes {
-    public class QuoteLoader {
+
+    public interface IQuoteLoader
+    {
+        IEnumerable<GreatQuoteViewModel> Load();
+        void Save(IEnumerable<GreatQuoteViewModel> quotes);
+    }
+    public class QuoteLoader : IQuoteLoader
+    {
         const string FileName = "quotes.xml";
 
         public IEnumerable<GreatQuoteViewModel> Load() {
